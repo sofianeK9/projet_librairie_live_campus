@@ -37,9 +37,16 @@ class Livre
     #[ORM\JoinColumn(nullable: false)]
     private ?Auteur $auteur = null;
 
+    /**
+     * @var Collection<int, Emprunt>
+     */
+    #[ORM\OneToMany(targetEntity: Emprunt::class, mappedBy: 'livre')]
+    private Collection $emprunts;
+
     public function __construct()
     {
         $this->genre = new ArrayCollection();
+        $this->emprunts = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -127,6 +134,36 @@ class Livre
     public function setAuteur(?Auteur $auteur): static
     {
         $this->auteur = $auteur;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Emprunt>
+     */
+    public function getEmprunts(): Collection
+    {
+        return $this->emprunts;
+    }
+
+    public function addEmprunt(Emprunt $emprunt): static
+    {
+        if (!$this->emprunts->contains($emprunt)) {
+            $this->emprunts->add($emprunt);
+            $emprunt->setLivre($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEmprunt(Emprunt $emprunt): static
+    {
+        if ($this->emprunts->removeElement($emprunt)) {
+            // set the owning side to null (unless already changed)
+            if ($emprunt->getLivre() === $this) {
+                $emprunt->setLivre(null);
+            }
+        }
 
         return $this;
     }
