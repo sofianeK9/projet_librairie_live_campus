@@ -1,20 +1,31 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Page d'accueil de la librairie
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+	</style>
+	<h1>Page d'accueil de la librairie</h1>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+	<div class="example-wrapper">
+		<div class="livres-grid">
+			{% for livre in livres %}
+				<div class="livre">
+					<p>
+						<strong>Titre:</strong>
+						{{ livre.titre }}</p>
+					<p>
+						<strong>Auteur:</strong>
+						{{ livre.auteur }}</p>
+					<p>
+						<strong>Année d'édition:</strong>
+						{{ livre.anneeEdition }}</p>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/home/kaya/Bureau/LiveCampus/Symfony/projet/librairie/src/Controller/HomeController.php</code></li>
-        <li>Your template at <code>/home/kaya/Bureau/LiveCampus/Symfony/projet/librairie/templates/home/index.html.twig</code></li>
-    </ul>
-</div>
+	<div class="pagination">
+		{{ knp_pagination_render(livres) }}
+	</div>
 {% endblock %}
