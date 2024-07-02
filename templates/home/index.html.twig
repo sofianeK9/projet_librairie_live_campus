@@ -1,28 +1,23 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Page d'accueil de la librairie
-{% endblock %}
+{% block title %}Page d'accueil de la librairie{% endblock %}
 
 {% block body %}
-	<h1>Page d'accueil de la librairie</h1>
+<h1>Page d'accueil de la librairie</h1>
 
-	<div class="example-wrapper">
-		<div class="livres-grid">
-			{% for livre in livres %}
-				<div class="livre">
-					<p>
-						<strong>Titre:</strong>
-						{{ livre.titre }}</p>
-					<p>
-						<strong>Auteur:</strong>
-						{{ livre.auteur }}</p>
-					<a href="{{ path('livre.details', {'titre': livre.titre, 'id': livre.id}) }}">Voir en détail</a>
-				</div>
-			{% endfor %}
-		</div>
-	</div>
+<div class="example-wrapper">
+    <div class="livres-grid">
+        {% for livre in livres %}
+            <div class="livre">
+                <p><strong>Titre:</strong> {{ livre.titre }}</p>
+                <p><strong>Auteur:</strong> {{ livre.auteur }}</p>
+                <a href="{{ path('livre.details', {'titre': livre.slug, 'id': livre.id}) }}">Voir en détail</a>
+            </div>
+        {% endfor %}
+    </div>
+</div>
 
-	<div class="pagination">
-		{{ knp_pagination_render(livres) }}
-	</div>
+<div class="pagination">
+    {{ knp_pagination_render(livres) }}
+</div>
 {% endblock %}

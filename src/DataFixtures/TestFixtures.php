@@ -11,6 +11,7 @@ use App\Entity\Livre;
 use App\Entity\Emprunteur;
 use App\Entity\Emprunt;
 use DateTimeImmutable;
+use App\Util\Slugger;
 // Fournit des méthodes pour la création de données fictives et on appelle des dependances (gestionnaire d'objet->manager)
 // qui permettent de créer des donées fictives, et de faire des operations d'écritures.
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -210,10 +211,13 @@ class TestFixtures extends Fixture implements FixtureGroupInterface
         foreach ($datas as $data) {
             $livre = new livre();
             $livre->setTitre($data['titre']);
+            $livre->setSlug(Slugger::slugify($data['titre']));
             $livre->setAnneeEdition($data['anneeEdition']);
             $livre->setNombrePages($data['nombrePages']);
             $livre->setCodeIsbn($data['codeIsbn']);
             $livre->setAuteur($data['auteurs']);
+            $resume = $this->faker->paragraph();
+            $livre->setResume($resume);
 
             $livre->addGenre($data['genres'][0]);
 
@@ -226,10 +230,14 @@ class TestFixtures extends Fixture implements FixtureGroupInterface
         for ($i = 0; $i < 1000; $i++) {
             $livre = new Livre();
             $words = random_int(2, 3);
-            $livre->setTitre($this->faker->unique()->sentence($words));
+            $titre = $this->faker->unique()->sentence($words);
+            $livre->setTitre($titre);
+            $livre->setSlug(Slugger::slugify($titre));
             $livre->setAnneeEdition($this->faker->optional(0.9)->year());
             $livre->setNombrePages($this->faker->numberBetween(100, 1000));
             $livre->setCodeIsbn($this->faker->unique()->isbn13());
+            $resume = $this->faker->paragraph();
+            $livre->setResume($resume);
 
             $auteur = $this->faker->randomElement($auteurs);
             $livre->setAuteur($auteur);

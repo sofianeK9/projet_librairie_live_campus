@@ -1,12 +1,27 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Détails du livre{% endblock %}
+{% block title %}Détails du livre
+{% endblock %}
 
 {% block body %}
-<div class="post">
-    <h3>{{ livre.titre }}</h3>
-    <p><strong>Auteur:</strong> {{ livre.auteur }}</p>
-    <p><strong>Code ISBN:</strong> {{ livre.codeIsbn }}</p>
-    <p><strong>Nombre de pages:</strong> {{ livre.nombrePages }}</p>
-</div>
+	<div class="example-wrapper">
+		<div class="livres-grid">
+			<div class="livre">
+				<p>
+					<strong>Titre:</strong>
+					{{ livre.titre }}</p>
+				<p>
+					<strong>Auteur:</strong>
+					{{ livre.auteur }}</p>
+				<p>
+					<strong>Code ISBN:</strong>
+					{{ livre.codeIsbn }}</p>
+                    <p>
+					<strong>Résumé:</strong>
+					{{ livre.resume }}</p>
+				<p>
+
+			</div>
+		</div>
+	</div>
 {% endblock %}
