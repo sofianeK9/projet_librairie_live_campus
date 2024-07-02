@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails du livre{% endblock %}
+
+{% block body %}
+<div class="post">
+    <h3>{{ livre.titre }}</h3>
+    <p><strong>Auteur:</strong> {{ livre.auteur }}</p>
+    <p><strong>Code ISBN:</strong> {{ livre.codeIsbn }}</p>
+    <p><strong>Nombre de pages:</strong> {{ livre.nombrePages }}</p>
+</div>
+{% endblock %}

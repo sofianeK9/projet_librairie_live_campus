@@ -174,7 +174,7 @@ class TestFixtures extends Fixture implements FixtureGroupInterface
 
         $datas = [
             [
-                'titre' => 'Lorem ipsum dolor sit amet',
+                'titre' => 'Lorem ipsum',
                 'anneeEdition' => 2010,
                 'nombrePages' => 300,
                 'codeIsbn' => '9785786930024',
@@ -225,7 +225,7 @@ class TestFixtures extends Fixture implements FixtureGroupInterface
 
         for ($i = 0; $i < 1000; $i++) {
             $livre = new Livre();
-            $words = random_int(2, 5);
+            $words = random_int(2, 3);
             $livre->setTitre($this->faker->unique()->sentence($words));
             $livre->setAnneeEdition($this->faker->optional(0.9)->year());
             $livre->setNombrePages($this->faker->numberBetween(100, 1000));

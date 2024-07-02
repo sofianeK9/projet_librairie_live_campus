@@ -4,7 +4,6 @@
 {% endblock %}
 
 {% block body %}
-	</style>
 	<h1>Page d'accueil de la librairie</h1>
 
 	<div class="example-wrapper">
@@ -17,9 +16,7 @@
 					<p>
 						<strong>Auteur:</strong>
 						{{ livre.auteur }}</p>
-					<p>
-						<strong>Année d'édition:</strong>
-						{{ livre.anneeEdition }}</p>
+					<a href="{{ path('livre.details', {'titre': livre.titre, 'id': livre.id}) }}">Voir en détail</a>
 				</div>
 			{% endfor %}
 		</div>
