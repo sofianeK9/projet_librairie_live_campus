@@ -39,18 +39,6 @@
                 <th>Disponible</th>
                 <td>{{ livre.disponible ? 'Yes' : 'No' }}</td>
             </tr>
-            <tr>
-                <th>CreatedAt</th>
-                <td>{{ livre.createdAt ? livre.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>UpdatedAt</th>
-                <td>{{ livre.updatedAt ? livre.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>DeletedAt</th>
-                <td>{{ livre.deletedAt ? livre.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
         </tbody>
     </table>
 

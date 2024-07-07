@@ -15,22 +15,7 @@ class GenreType extends AbstractType
     {
         $builder
             ->add('nom')
-            ->add('description')
-            ->add('createdAt', null, [
-                'widget' => 'single_text',
-            ])
-            ->add('updatedAt', null, [
-                'widget' => 'single_text',
-            ])
-            ->add('deletedAt', null, [
-                'widget' => 'single_text',
-            ])
-            ->add('livres', EntityType::class, [
-                'class' => Livre::class,
-                'choice_label' => 'id',
-                'multiple' => true,
-            ])
-        ;
+            ->add('description');
     }
 
     public function configureOptions(OptionsResolver $resolver): void

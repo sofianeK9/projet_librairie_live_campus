@@ -14,15 +14,6 @@ class AuteurType extends AbstractType
         $builder
             ->add('nom')
             ->add('prenom')
-            ->add('createdAt', null, [
-                'widget' => 'single_text',
-            ])
-            ->add('updatedAt', null, [
-                'widget' => 'single_text',
-            ])
-            ->add('deletedAt', null, [
-                'widget' => 'single_text',
-            ])
         ;
     }
 

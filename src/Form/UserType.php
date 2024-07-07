@@ -17,15 +17,6 @@ class UserType extends AbstractType
             ->add('email')
             ->add('roles')
             ->add('password')
-            ->add('createdAt', null, [
-                'widget' => 'single_text',
-            ])
-            ->add('updatedAt', null, [
-                'widget' => 'single_text',
-            ])
-            ->add('deletedAt', null, [
-                'widget' => 'single_text',
-            ])
             ->add('emprunteur', EntityType::class, [
                 'class' => Emprunteur::class,
                 'choice_label' => 'id',
