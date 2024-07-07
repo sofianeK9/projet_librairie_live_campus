@@ -56,6 +56,9 @@ class Livre
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $resume = null;
 
+    #[ORM\Column]
+    private ?bool $disponible = null;
+
     public function __construct()
     {
         $this->genre = new ArrayCollection();
@@ -201,6 +204,18 @@ class Livre
     public function setResume(?string $resume): static
     {
         $this->resume = $resume;
+
+        return $this;
+    }
+
+    public function isDisponible(): ?bool
+    {
+        return $this->disponible;
+    }
+
+    public function setDisponible(bool $disponible): static
+    {
+        $this->disponible = $disponible;
 
         return $this;
     }

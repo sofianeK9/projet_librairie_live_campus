@@ -179,6 +179,7 @@ class TestFixtures extends Fixture implements FixtureGroupInterface
                 'anneeEdition' => 2010,
                 'nombrePages' => 300,
                 'codeIsbn' => '9785786930024',
+                'disponible' => true,
                 'auteurs' => $auteur1,
                 'genres' => [$genre1]
             ],
@@ -187,6 +188,7 @@ class TestFixtures extends Fixture implements FixtureGroupInterface
                 'anneeEdition' => 2033,
                 'nombrePages' => 150,
                 'codeIsbn' => '9785786931145',
+                'disponible' => true,
                 'auteurs' => $auteur2,
                 'genres' => [$genre3]
             ],
@@ -195,6 +197,7 @@ class TestFixtures extends Fixture implements FixtureGroupInterface
                 'anneeEdition' => 2008,
                 'nombrePages' => 340,
                 'codeIsbn' => '9785786785463',
+                'disponible' => true,
                 'auteurs' => $auteur3,
                 'genres' => [$genre3]
             ],
@@ -203,6 +206,7 @@ class TestFixtures extends Fixture implements FixtureGroupInterface
                 'anneeEdition' => 2014,
                 'nombrePages' => 250,
                 'codeIsbn' => '1236786785463',
+                'disponible' => true,
                 'auteurs' => $auteur4,
                 'genres' => [$genre4]
             ]
@@ -216,6 +220,7 @@ class TestFixtures extends Fixture implements FixtureGroupInterface
             $livre->setNombrePages($data['nombrePages']);
             $livre->setCodeIsbn($data['codeIsbn']);
             $livre->setAuteur($data['auteurs']);
+            $livre->setDisponible($data['disponible']);
             $resume = $this->faker->paragraph();
             $livre->setResume($resume);
 
@@ -238,6 +243,7 @@ class TestFixtures extends Fixture implements FixtureGroupInterface
             $livre->setCodeIsbn($this->faker->unique()->isbn13());
             $resume = $this->faker->paragraph();
             $livre->setResume($resume);
+            $livre->setDisponible($this->faker->boolean());
 
             $auteur = $this->faker->randomElement($auteurs);
             $livre->setAuteur($auteur);
