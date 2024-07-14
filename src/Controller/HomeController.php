@@ -21,7 +21,7 @@ class HomeController extends AbstractController
         $pagination = $pagination->paginate(
             $livres,
             $request->query->getInt('page', 1),
-            9 // Limite d'éléments par page
+            9 
         );
         return $this->render('home/index.html.twig', [
             'livres' => $pagination,
