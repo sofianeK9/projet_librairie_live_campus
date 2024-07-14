@@ -15,6 +15,7 @@
 				<th>actions</th>
 			</tr>
 		</thead>
+		<a href="{{ path('app_admin_user_new') }}">Create new</a>
 		<tbody>
 			{% for user in users %}
 				<tr>
@@ -34,5 +35,4 @@
 		</tbody>
 	</table>
 
-	<a href="{{ path('app_admin_user_new') }}">Create new</a>
 {% endblock %}

@@ -3,9 +3,7 @@
 {% block title %}Livre index
 {% endblock %}
 
-{% block stylesheets %}
-	<link rel="stylesheet" href="{{ asset('css/livre.css') }}">
-{% endblock %}
+{% block stylesheets %}{% endblock %}
 
 {% block body %}
 	<h1>Livre index</h1>
@@ -25,6 +23,7 @@
 				</tr>
 			</thead>
 			<tbody>
+				<a class="create-new" href="{{ path('app_admin_livre_new') }}">Create new</a>
 				{% for livre in livres %}
 					<tr>
 						<td>{{ livre.id }}</td>
@@ -47,6 +46,5 @@
 			</tbody>
 		</table>
 
-		<a class="create-new" href="{{ path('app_admin_livre_new') }}">Create new</a>
 	</div>
 {% endblock %}

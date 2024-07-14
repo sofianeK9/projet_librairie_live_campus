@@ -60,7 +60,7 @@ class AppFixtures extends Fixture implements FixtureGroupInterface
             $user->setEmail($data['email']);
             $password = $this->hasher->hashPassword($user, $data['password']);
             $user->setPassword($password);
-            $user->setRoles(['roles']);
+            $user->setRoles(['ROLE_ADMIN']);
 
             $this->manager->persist($user);
         }
