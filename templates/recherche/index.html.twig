@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+	<div class="recherche-container">
+		<h1>Recherche par nom ou prénom ou titre:</h1>
+		<div class="search-container">
+			{{ form_start(form, { method: "POST" }) }}
+			{{ form_row(form.keyword) }}
+			{{ form_row(form.search) }}
+			{{ form_end(form) }}
+		</div>
+
+		{% if keyword is not empty %}
+			<h3>Résultat de la recherche pour "{{ keyword }}"</h3>
+			<ul>
+				{% for livre in results %}
+					<li>
+						<a href="{{ path('livre.details', {'titre': livre.slug, 'id': livre.id}) }}">
+							{{ livre.titre }}
+						</a>
+					</li>
+				{% else %}
+					<li>Aucun résultat trouvé.</li>
+				{% endfor %}
+			</ul>
+		{% else %}
+			<li>Aucun livre disponible.</li>
+
+		</ul>
+	{% endif %}
+{% endblock %}

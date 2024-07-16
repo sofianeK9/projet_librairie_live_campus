@@ -16,20 +16,21 @@ class LivreRepository extends ServiceEntityRepository
         parent::__construct($registry, Livre::class);
     }
 
-    //    /**
-    //     * @return Livre[] Returns an array of Livre objects
-    //     */
-    //    public function findByExampleField($value): array
-    //    {
-    //        return $this->createQueryBuilder('l')
-    //            ->andWhere('l.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->orderBy('l.id', 'ASC')
-    //            ->setMaxResults(10)
-    //            ->getQuery()
-    //            ->getResult()
-    //        ;
-    //    }
+    public function recherche($keyword): array
+    {
+        $query = $this->createQueryBuilder("l")
+            ->leftJoin('l.auteur', 'a');
+
+        if ($keyword) {
+            $query->andWhere('a.nom LIKE :keyword OR a.prenom LIKE :keyword OR l.titre LIKE :keyword')
+                ->setParameter('keyword', '%' . $keyword . '%');
+        }
+
+        return $query
+            ->getQuery()
+            ->getResult();
+    }
+
 
     //    public function findOneBySomeField($value): ?Livre
     //    {
