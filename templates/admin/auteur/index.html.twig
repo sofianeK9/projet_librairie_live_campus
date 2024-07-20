@@ -3,8 +3,7 @@
 {% block title %}Auteur index
 {% endblock %}
 
-{% block stylesheets %}
-{% endblock %}
+{% block stylesheets %}{% endblock %}
 
 {% block body %}
 	<h1>Auteur index</h1>
@@ -37,5 +36,8 @@
 			{% endfor %}
 		</tbody>
 	</table>
+	<div class="pagination mt-4">
+		{{ knp_pagination_render(auteurs, '@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig') }}
+	</div>
 
 {% endblock %}

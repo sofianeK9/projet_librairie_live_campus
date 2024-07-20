@@ -20,6 +20,7 @@ class RechercheController extends AbstractController
         $form = $this->createForm(RechercheType::class);
         $form->handleRequest($request);
 
+        $pagination = null;
         $keyword = '';
 
         if ($form->isSubmitted() && $form->isValid()) {
