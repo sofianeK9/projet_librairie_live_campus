@@ -1,33 +1,47 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{% endblock %}
+{% block title %}Recherche{% endblock %}
 
 {% block body %}
-	<div class="recherche-container">
-		<h1>Recherche par nom ou prénom ou titre:</h1>
-		<div class="search-container">
-			{{ form_start(form, { method: "POST" }) }}
-			{{ form_row(form.keyword) }}
-			{{ form_row(form.search) }}
-			{{ form_end(form) }}
-		</div>
+    <div class="container mt-5">
+        <div class="recherche-container">
+            <h1>Recherche par nom, prénom, titre ou genre :</h1>
+            <div class="search-container">
+                {{ form_start(form, { method: "POST" }) }}
+                <div class="mb-3">
+                    {{ form_row(form.keyword, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                <div class="mb-3">
+                    {{ form_row(form.search, {'attr': {'class': 'btn btn-primary'}}) }}
+                </div>
+                {{ form_end(form) }}
+            </div>
 
-		{% if keyword is not empty %}
-			<h3>Résultat de la recherche pour "{{ keyword }}"</h3>
-			<ul>
-				{% for livre in results %}
-					<li>
-						<a href="{{ path('livre.details', {'titre': livre.slug, 'id': livre.id}) }}">
-							{{ livre.titre }}
-						</a>
-					</li>
-				{% else %}
-					<li>Aucun résultat trouvé.</li>
-				{% endfor %}
-			</ul>
-		{% else %}
-			<li>Aucun livre disponible.</li>
+            {% if keyword is not empty %}
+                <h3 class="mt-4">Résultat de la recherche pour "{{ keyword }}"</h3>
+                <ul class="list-group mt-3">
+                    {% for livre in results %}
+                        <li class="list-group-item">
+                            <a href="{{ path('livre.details', {'titre': livre.slug, 'id': livre.id}) }}">
+                                {{ livre.titre }}
+                            </a>
+                        </li>
+                    {% else %}
+                        <li class="list-group-item">Aucun résultat trouvé.</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <ul class="list-group mt-3">
+                    <li class="list-group-item">Aucun livre disponible.</li>
+                </ul>
+            {% endif %}
 
-		</ul>
-	{% endif %}
+            {% if results is not null %}
+                <div class="pagination mt-4">
+                    {{ knp_pagination_render(results, '@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig') }}
+                </div>
+            {% endif %}
+
+        </div>
+    </div>
 {% endblock %}

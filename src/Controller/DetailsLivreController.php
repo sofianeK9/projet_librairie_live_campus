@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\GenreRepository;
 use App\Repository\LivreRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,7 +16,7 @@ class DetailsLivreController extends AbstractController
         'titre' => '[a-z0-9-]+',
         'id' => '\d+'
     ])]
-    public function index(Request $request, LivreRepository $LivreRepository, string $titre, int $id): Response
+    public function index(Request $request, LivreRepository $LivreRepository, GenreRepository $genreRepository, string $titre, int $id): Response
     {
         $livre = $LivreRepository->find($id);
 

@@ -184,6 +184,24 @@ class TestFixtures extends Fixture implements FixtureGroupInterface
                 'genres' => [$genre1]
             ],
             [
+                'titre' => 'Lorem ipsum',
+                'anneeEdition' => 2010,
+                'nombrePages' => 300,
+                'codeIsbn' => '9785786930024',
+                'disponible' => true,
+                'auteurs' => $auteur1,
+                'genres' => [$genre1]
+            ],
+            [
+                'titre' => 'Lorem ipsum',
+                'anneeEdition' => 2010,
+                'nombrePages' => 300,
+                'codeIsbn' => '9785786930024',
+                'disponible' => true,
+                'auteurs' => $auteur1,
+                'genres' => [$genre1]
+            ],
+            [
                 'titre' => 'Art de la guerre',
                 'anneeEdition' => 2033,
                 'nombrePages' => 150,

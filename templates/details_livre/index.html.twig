@@ -1,18 +1,30 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Détails du livre{% endblock %}
+{% block title %}Détails du livre
+{% endblock %}
 
 {% block body %}
-    <div class="container mt-5">
-        <h1>Détails du livre "{{ livre.titre }}"</h1>
+	<div class="container mt-5">
+		<h1>Détails du livre "{{ livre.titre }}"</h1>
 
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">{{ livre.titre }}</h5>
-                <p class="card-text"><strong>Auteur:</strong> {{ livre.auteur }}</p>
-                <p class="card-text"><strong>Code ISBN:</strong> {{ livre.codeIsbn }}</p>
-                <p class="card-text"><strong>Résumé:</strong> {{ livre.resume }}</p>
-            </div>
-        </div>
-    </div>
-{% endblock %}
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-title">{{ livre.titre }}</h5>
+				<p class="card-text">
+					<strong>Auteur:</strong>
+					{{ livre.auteur }}</p>
+				<p class="card-text">
+					<strong>Code ISBN:</strong>
+					{{ livre.codeIsbn }}</p>
+				<p class="card-text">
+					<strong>Résumé:</strong>
+					{{ livre.resume }}</p>
+				{% for genre in livre.genre %}
+					<p class="card-text">
+						<strong>Genre</strong>
+						{{ genre.nom }}
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	{% endblock %}

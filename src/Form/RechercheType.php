@@ -14,7 +14,7 @@ class RechercheType extends AbstractType
     {
         $builder
             ->add('keyword', TextType::class, [
-                'label' => 'Titre, Nom ou Prénom de l\'auteur'
+                'label' => 'Titre, Nom ou Prénom de l\'auteur, genre'
             ])
             ->add('search', SubmitType::class, [
                 'label' => 'Rechercher',

@@ -19,17 +19,19 @@ class LivreRepository extends ServiceEntityRepository
     public function recherche($keyword): array
     {
         $query = $this->createQueryBuilder("l")
-            ->leftJoin('l.auteur', 'a');
-
+            ->leftJoin('l.auteur', 'a')
+            ->leftJoin('l.genre', 'g');  
+    
         if ($keyword) {
-            $query->andWhere('a.nom LIKE :keyword OR a.prenom LIKE :keyword OR l.titre LIKE :keyword')
+            $query->andWhere('a.nom LIKE :keyword OR a.prenom LIKE :keyword OR l.titre LIKE :keyword OR g.nom LIKE :keyword')
                 ->setParameter('keyword', '%' . $keyword . '%');
         }
-
+    
         return $query
             ->getQuery()
             ->getResult();
     }
+    
 
 
     //    public function findOneBySomeField($value): ?Livre
