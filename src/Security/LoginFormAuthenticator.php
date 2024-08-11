@@ -53,10 +53,17 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
         $user = $token->getUser();
         $roles = $token->getRoleNames();
 
-        if (in_array('ROLE_ADMIN', $roles) || in_array('ROLE_USER', $roles)) {
+         // tableau  pour définir les redirections en fonction des rôles
+         if (in_array('ROLE_ADMIN', $roles)) {
             return new RedirectResponse($this->urlGenerator->generate('app_home'));
-        } else {
-            return new RedirectResponse($this->urlGenerator->generate('app_rgpd'));
+        } elseif (in_array('ROLE_USER', $roles)) {
+            if (!$user->getEmprunteur()) {
+             // c'est un nouvel apprenant qui n'a pas encore rempli son profil
+                return new RedirectResponse($this->urlGenerator->generate('app_rgpd'));
+                } else {
+                 // c'est un apprenant qui a déjà rempli son profil
+                 return new RedirectResponse($this->urlGenerator->generate('app_home'));
+                }
         }
         
     }
