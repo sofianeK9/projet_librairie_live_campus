@@ -11,7 +11,7 @@
 					<div class="card-body">
 						<h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
 
-						<form method="post" action="{{ path('app_login') }}" class="needs-validation" novalidate>
+						<form method="post" action="{{ path('login') }}" class="needs-validation" novalidate>
 							{% if error %}
 								<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 							{% endif %}

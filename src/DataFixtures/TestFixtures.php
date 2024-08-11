@@ -285,6 +285,7 @@ class TestFixtures extends Fixture implements FixtureGroupInterface
                 'email' => 'foo.foo@exemple.com',
                 'roles' => ['ROLE_USER'],
                 'password' => '123',
+                'consentement' => true,
 
                 'nom' => 'Charles',
                 'prenom' => 'Magnus',
@@ -295,6 +296,8 @@ class TestFixtures extends Fixture implements FixtureGroupInterface
                 'email' => 'bar.bar@exemple.com',
                 'roles' => ['ROLE_USER'],
                 'password' => '123',
+                'consentement' => true,
+
 
                 'nom' => 'Jack',
                 'prenom' => 'Sparrow',
@@ -305,6 +308,8 @@ class TestFixtures extends Fixture implements FixtureGroupInterface
                 'email' => 'baz.baz@exemple.com',
                 'roles' => ['ROLE_USER'],
                 'password' => '123',
+                'consentement' => true,
+
 
                 'nom' => 'Ethan',
                 'prenom' => 'Brown',
@@ -318,6 +323,7 @@ class TestFixtures extends Fixture implements FixtureGroupInterface
             $password = $this->hasher->hashPassword($user, $data['password']);
             $user->setPassword($password);
             $user->setRoles($data['roles']);
+            $user->setConsentement($data['consentement']);
 
 
             $this->manager->persist($user);
@@ -345,6 +351,7 @@ class TestFixtures extends Fixture implements FixtureGroupInterface
             $password = $this->hasher->hashPassword($user, '123');
             $user->setPassword($password);
             $user->setRoles(['ROLE_USER']);
+            $user->setConsentement($this->faker->boolean());
 
             $this->manager->persist($user);
 

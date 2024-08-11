@@ -42,6 +42,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToOne(mappedBy: 'user', cascade: ['persist', 'remove'])]
     private ?Emprunteur $emprunteur = null;
 
+    #[ORM\Column]
+    private ?bool $consentement = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -135,6 +138,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         }
 
         $this->emprunteur = $emprunteur;
+
+        return $this;
+    }
+
+    public function isConsentement(): ?bool
+    {
+        return $this->consentement;
+    }
+
+    public function setConsentement(bool $consentement): static
+    {
+        $this->consentement = $consentement;
 
         return $this;
     }

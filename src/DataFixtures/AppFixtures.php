@@ -37,7 +37,7 @@ class AppFixtures extends Fixture implements FixtureGroupInterface
     }
     public function load(ObjectManager $manager): void
     {
-        
+
         $this->manager = $manager;
         $this->loadAdmins();
 
@@ -51,6 +51,8 @@ class AppFixtures extends Fixture implements FixtureGroupInterface
                 'email' => 'admin@exemple.com',
                 'password' => '123',
                 'roles' => ['ROLE_ADMIN'],
+                'consentement' => true
+
 
             ]
         ];
@@ -61,6 +63,7 @@ class AppFixtures extends Fixture implements FixtureGroupInterface
             $password = $this->hasher->hashPassword($user, $data['password']);
             $user->setPassword($password);
             $user->setRoles(['ROLE_ADMIN']);
+            $user->setConsentement($data['consentement']);
 
             $this->manager->persist($user);
         }

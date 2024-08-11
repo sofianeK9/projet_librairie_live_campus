@@ -20,7 +20,7 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
 {
     use TargetPathTrait;
 
-    public const LOGIN_ROUTE = 'app_login';
+    public const LOGIN_ROUTE = 'login';
 
     public function __construct(private UrlGeneratorInterface $urlGenerator)
     {
@@ -56,7 +56,7 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
         if (in_array('ROLE_ADMIN', $roles) || in_array('ROLE_USER', $roles)) {
             return new RedirectResponse($this->urlGenerator->generate('app_home'));
         } else {
-            return new RedirectResponse($this->urlGenerator->generate('app_r_g_p_d'));
+            return new RedirectResponse($this->urlGenerator->generate('app_rgpd'));
         }
         
     }
